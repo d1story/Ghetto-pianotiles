@@ -6,11 +6,12 @@ public class beats : MonoBehaviour
 {
     float []Nextnote = {};
     public float BPM, timeofnothingness, beatfall;
-    int number;
-    float songpos, songposB, songstartpos, secperbeat, diff;
+    int number, prev;
+    float songpos, songposB, songstartpos, secperbeat;
     // Start is called before the first frame update
     void Start()
     {
+        prev = 1;
         secperbeat = 60f / BPM;
         songstartpos = (float) AudioSettings.dspTime + timeofnothingness;
         GetComponent<AudioSource>().Play();
@@ -23,7 +24,9 @@ public class beats : MonoBehaviour
         songposB = songpos / secperbeat;
         if(number<Nextnote.Length&& Nextnote[number]< songposB + beatfall)
         {
-            //Instantiate( );
+            prev += Random.Range(1, 3);
+            prev %= 4;
+            notes.Instantiate(prev, Nextnote[number], songposB);
             number++;
         }
     }
