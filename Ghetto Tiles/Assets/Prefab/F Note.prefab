@@ -122,3 +122,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c650f8aa47cb3a4f88b946982c3d3b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fallingTimeInBeats: 3
+  beats: {fileID: 11500000, guid: 44a47c0d90652a847b4d05582dcc4fbf, type: 3}

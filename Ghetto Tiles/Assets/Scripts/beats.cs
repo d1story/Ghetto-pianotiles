@@ -5,7 +5,7 @@ using UnityEngine;
 public class beats : MonoBehaviour
 {
     public GameObject D, F, J, K;
-    float []Nextnote = {};
+    float[] Nextnote = { };
     public float BPM, timeofnothingness, fallingTimeInBeats;
     int number, pos;
     float songpos, songposB, songstartpos, secperbeat;
@@ -13,18 +13,18 @@ public class beats : MonoBehaviour
     void Start()
     {
         secperbeat = 60f / BPM;
-        songstartpos = (float) AudioSettings.dspTime + timeofnothingness;
+        songstartpos = (float)AudioSettings.dspTime + timeofnothingness;
         GetComponent<AudioSource>().Play();
     }
 
-    public float getnoteB()
+    public float GetNoteB()
     {
         if (number < Nextnote.Length)
             return Nextnote[number];
         return -1;
     }
 
-    public float getsongposB()
+    public float GetSongPosB()
     {
         return songposB;
     }
@@ -33,11 +33,12 @@ public class beats : MonoBehaviour
     {
         songpos = (float)AudioSettings.dspTime - songstartpos;
         songposB = songpos / secperbeat;
-        if(number<Nextnote.Length&& Nextnote[number]< songposB + fallingTimeInBeats)
+        if (number < Nextnote.Length && Nextnote[number] < songposB + fallingTimeInBeats)
         {
             pos = Random.Range(0, 3);
             Vector2 spawn;
-            switch (pos){
+            switch (pos)
+            {
                 case 0:
                     spawn = new Vector2(-3, 6);
                     Instantiate(D, spawn, Quaternion.identity);
