@@ -4,30 +4,57 @@ using UnityEngine;
 
 public class beats : MonoBehaviour
 {
+    public GameObject D, F, J, K;
     float []Nextnote = {};
-    public float BPM, timeofnothingness, beatfall;
-    int number, prev;
+    public float BPM, timeofnothingness, fallingTimeInBeats;
+    int number, pos;
     float songpos, songposB, songstartpos, secperbeat;
     // Start is called before the first frame update
     void Start()
     {
-        prev = 1;
         secperbeat = 60f / BPM;
         songstartpos = (float) AudioSettings.dspTime + timeofnothingness;
         GetComponent<AudioSource>().Play();
     }
 
+    public float getnoteB()
+    {
+        if (number < Nextnote.Length)
+            return Nextnote[number];
+        return -1;
+    }
+
+    public float getsongposB()
+    {
+        return songposB;
+    }
     // Update is called once per frame
     void Update()
     {
         songpos = (float)AudioSettings.dspTime - songstartpos;
         songposB = songpos / secperbeat;
-        if(number<Nextnote.Length&& Nextnote[number]< songposB + beatfall)
+        if(number<Nextnote.Length&& Nextnote[number]< songposB + fallingTimeInBeats)
         {
-            prev += Random.Range(1, 3);
-            prev %= 4;
-            notes.Instantiate(prev, Nextnote[number], songposB);
-            number++;
+            pos = Random.Range(0, 3);
+            Vector2 spawn;
+            switch (pos){
+                case 0:
+                    spawn = new Vector2(-3, 6);
+                    Instantiate(D, spawn, Quaternion.identity);
+                    break;
+                case 1:
+                    spawn = new Vector2(-1, 6);
+                    Instantiate(F, spawn, Quaternion.identity);
+                    break;
+                case 2:
+                    spawn = new Vector2(1, 6);
+                    Instantiate(J, spawn, Quaternion.identity);
+                    break;
+                case 3:
+                    spawn = new Vector2(3, 6);
+                    Instantiate(K, spawn, Quaternion.identity);
+                    break;
+            }
         }
     }
 }
