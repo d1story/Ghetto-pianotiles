@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class beats : MonoBehaviour
 {
     public GameObject D, F, J, K;
-    float[] Nextnote = { };
+    float[] Nextnote = {1.0f };
     public float BPM, timeofnothingness, fallingTimeInBeats;
     int number, pos;
     float songpos, songposB, songstartpos, secperbeat;
@@ -55,6 +55,7 @@ public class beats : MonoBehaviour
         {
             if (number < Nextnote.Length && Nextnote[number] < songposB + fallingTimeInBeats)
             {
+                number++;
                 pos = Random.Range(0, 3);
                 Vector2 spawn;
                 switch (pos)
@@ -80,9 +81,5 @@ public class beats : MonoBehaviour
             songpos = (float)AudioSettings.dspTime - songstartpos;
             songposB = songpos / secperbeat;
         }
-
-
     }
-
-
 }

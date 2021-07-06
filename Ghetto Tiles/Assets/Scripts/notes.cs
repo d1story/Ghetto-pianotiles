@@ -9,7 +9,6 @@ public class notes : MonoBehaviour
     private float noteBeat;//The beat of this note
     private float songPosInBeats;
     public beats beatController;
-
     Vector2 SpawnPos;
     Vector2 RemovePos;
 
