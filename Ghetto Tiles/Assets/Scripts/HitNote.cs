@@ -15,29 +15,31 @@ public class HitNote : MonoBehaviour
         }
     }
     // If the note touches da bar
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        notes notehere = other.GetComponent<notes>();
+        notes notehere = collision.GetComponent<notes>();
         right = false;
         if (Input.GetKeyDown(KeyCode.D)&& notehere.transform.position.x == -3f)
         {
             right = true;
         }
-        if (Input.GetKeyDown(KeyCode.F) && notehere.transform.position.x == -1f)
+        else if (Input.GetKeyDown(KeyCode.F) && notehere.transform.position.x == -1f)
         {
             right = true;
         }
-        if (Input.GetKeyDown(KeyCode.J)&&notehere.transform.position.x == 1f)
+        else if (Input.GetKeyDown(KeyCode.J)&&notehere.transform.position.x == 1f)
         {
             right = true;
         }
-        if (Input.GetKeyDown(KeyCode.K)&& notehere.transform.position.x == 3f)
+        else if (Input.GetKeyDown(KeyCode.K)&& notehere.transform.position.x == 3f)
         {
             right = true;
         }
-        if (!right) return;
-        p.normalHit();
-        notehere.DestroyNote();
+        if (right)
+        {
+            p.normalHit();
+            notehere.DestroyNote();
+        }
     }
     // Update is called once per frame
     void Update()
