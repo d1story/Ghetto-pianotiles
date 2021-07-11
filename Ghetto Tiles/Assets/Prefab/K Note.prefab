@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3566478283345563797}
   - component: {fileID: 3566478283345563798}
+  - component: {fileID: 8332374750485718825}
   - component: {fileID: 1493720492978710059}
-  - component: {fileID: -3094531477025318111}
   m_Layer: 0
   m_Name: K Note
   m_TagString: Untagged
@@ -84,6 +84,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8332374750485718825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3566478283345563799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c650f8aa47cb3a4f88b946982c3d3b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fallingTimeInBeats: 0
+  noteBeat: 0
+  songPosInBeats: 0
 --- !u!61 &1493720492978710059
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -110,18 +125,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &-3094531477025318111
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3566478283345563799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c650f8aa47cb3a4f88b946982c3d3b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fallingTimeInBeats: 3
-  noteBeat: 0
-  songPosInBeats: 0

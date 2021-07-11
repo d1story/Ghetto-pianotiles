@@ -18,7 +18,7 @@ public class Points : MonoBehaviour
 
     }
 
-    void normalHit()//gain the points given from a normal hit... maybe add more precision in hits later?
+    public void normalHit()//gain the points given from a normal hit... maybe add more precision in hits later?
     {
         points += 100;
         Debug.Log(points);
