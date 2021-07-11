@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class notes : MonoBehaviour
+public class Notes : MonoBehaviour
 {
 
     public float fallingTimeInBeats;//The time it takes for the beat to reach the hitbar in beats.
     public float noteBeat;//The beat of this note
     public float songPosInBeats;
-    private beats beatController;
+    private Beats beatController;
     Vector2 SpawnPos;
     Vector2 RemovePos;
 
@@ -23,11 +23,18 @@ public class notes : MonoBehaviour
         GameObject beatControllerObject = GameObject.FindGameObjectWithTag("GameController");
         if (beatControllerObject != null)
         {
-            beatController = beatControllerObject.GetComponent<beats>();
+            beatController = beatControllerObject.GetComponent<Beats>();
         }
 
         //get the noteBeat
         noteBeat = beatController.GetNoteB();
+    }
+
+    void HitNote()
+    {
+        //get reference to class which contains points in start.
+        Destroy(gameObject);
+
     }
     void Update()
     {

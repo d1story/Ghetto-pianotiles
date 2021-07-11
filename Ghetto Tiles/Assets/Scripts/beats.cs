@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class beats : MonoBehaviour
+public class Beats : MonoBehaviour
 {
     public GameObject D, F, J, K;
     float[] Nextnote = { 3.0f, 5.0f, 7.0f };
