@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3463272016682750721}
   - component: {fileID: 3463272016682750720}
   - component: {fileID: 8359043959968635075}
-  - component: {fileID: 8372979350084410419}
+  - component: {fileID: 5577023872483118211}
   m_Layer: 0
   m_Name: D Note
   m_TagString: Untagged
@@ -110,7 +110,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &8372979350084410419
+--- !u!114 &5577023872483118211
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,5 +122,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c650f8aa47cb3a4f88b946982c3d3b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallingTimeInBeats: 3
-  beats: {fileID: 11500000, guid: 44a47c0d90652a847b4d05582dcc4fbf, type: 3}
+  fallingTimeInBeats: 0
+  beatController: {fileID: 2564926915281546410, guid: 0b02d068810cb6d4d828757dcaf3a1f8, type: 3}

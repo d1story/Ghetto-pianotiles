@@ -8,13 +8,13 @@ public class notes : MonoBehaviour
     public float fallingTimeInBeats;//The time it takes for the beat to reach the hitbar in beats.
     private float noteBeat;//The beat of this note
     private float songPosInBeats;
-    public beats beatController;
     Vector2 SpawnPos;
     Vector2 RemovePos;
-
+    beats beatController;
     // Start is called before the first frame update
     void Start()
     {
+        beatController = GameObject.FindWithTag("b");
         SpawnPos = transform.position;
         fallingTimeInBeats = 2f;
         RemovePos = SpawnPos;
@@ -25,8 +25,6 @@ public class notes : MonoBehaviour
 
     void Update()
     {
-
-
         //get the songposintbeat
         songPosInBeats = beatController.GetSongPosB();
         transform.position = Vector2.Lerp(

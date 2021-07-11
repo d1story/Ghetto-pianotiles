@@ -123,4 +123,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallingTimeInBeats: 3
-  beats: {fileID: 11500000, guid: 44a47c0d90652a847b4d05582dcc4fbf, type: 3}
+  beatController: {fileID: 2564926915281546410, guid: 0b02d068810cb6d4d828757dcaf3a1f8, type: 3}
