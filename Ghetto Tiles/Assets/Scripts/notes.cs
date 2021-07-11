@@ -19,6 +19,13 @@ public class notes : MonoBehaviour
         fallingTimeInBeats = 2f;
         RemovePos = SpawnPos;
         RemovePos.y = SpawnPos.y - 10f;
+
+        GameObject beatControllerObject = GameObject.FindGameObjectWithTag("GameController");
+        if (beatControllerObject != null)
+        {
+            beatController = beatControllerObject.GetComponent<beats>();
+        }
+
         //get the noteBeat
         noteBeat = beatController.GetNoteB();
     }
@@ -29,6 +36,7 @@ public class notes : MonoBehaviour
 
         //get the songposintbeat
         songPosInBeats = beatController.GetSongPosB();
+
         transform.position = Vector2.Lerp(
             SpawnPos,
             RemovePos,
