@@ -6,9 +6,9 @@ public class notes : MonoBehaviour
 {
 
     public float fallingTimeInBeats;//The time it takes for the beat to reach the hitbar in beats.
-    private float noteBeat;//The beat of this note
-    private float songPosInBeats;
-    public beats beatController;
+    public float noteBeat;//The beat of this note
+    public float songPosInBeats;
+    private beats beatController;
     Vector2 SpawnPos;
     Vector2 RemovePos;
 
@@ -29,11 +29,8 @@ public class notes : MonoBehaviour
         //get the noteBeat
         noteBeat = beatController.GetNoteB();
     }
-
     void Update()
     {
-
-
         //get the songposintbeat
         songPosInBeats = beatController.GetSongPosB();
 

@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 7ecb39bfb1ced2d409b86138f1893317, type: 3}
   m_Color: {r: 0.44298744, g: 1, b: 0.31760997, a: 1}
   m_FlipX: 0
@@ -123,4 +123,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallingTimeInBeats: 3
-  beats: {fileID: 11500000, guid: 44a47c0d90652a847b4d05582dcc4fbf, type: 3}
+  noteBeat: 0
+  songPosInBeats: 0

@@ -40,7 +40,11 @@ public class beats : MonoBehaviour
     public float GetNoteB()
     {
         if (number < Nextnote.Length)
-            return Nextnote[number];
+        {
+            number++;
+            return Nextnote[number - 1];
+        }
+
         return -1;
     }
 
@@ -55,7 +59,6 @@ public class beats : MonoBehaviour
         {
             if (number < Nextnote.Length && Nextnote[number] < songposB + fallingTimeInBeats)
             {
-                number++;
                 pos = Random.Range(0, 3);
                 Vector2 spawn;
                 switch (pos)
@@ -77,6 +80,7 @@ public class beats : MonoBehaviour
                         Instantiate(K, spawn, Quaternion.identity);
                         break;
                 }
+
             }
             songpos = (float)AudioSettings.dspTime - songstartpos;
             songposB = songpos / secperbeat;
