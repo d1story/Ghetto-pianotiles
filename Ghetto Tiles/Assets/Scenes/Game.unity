@@ -875,7 +875,7 @@ GameObject:
   - component: {fileID: 1655269486}
   m_Layer: 0
   m_Name: Beat Controller
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -892,10 +892,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44a47c0d90652a847b4d05582dcc4fbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  D: {fileID: 298225701}
-  F: {fileID: 1913786647}
-  J: {fileID: 111395515}
-  K: {fileID: 271301708}
+  D: {fileID: 3463272016682750723, guid: 3c764da296dbb514f9dbed4e89742e89, type: 3}
+  F: {fileID: 8959190417394565689, guid: 7a59f40a6054ef94f88cf0313686c315, type: 3}
+  J: {fileID: 6599198689024053445, guid: ef7a5c2f0cb7123419d741b63e2eaae4, type: 3}
+  K: {fileID: 3566478283345563799, guid: 4a14562e88c5d0f4ea7c9769a9d16b4c, type: 3}
   BPM: 130
   timeofnothingness: 1
   fallingTimeInBeats: 3
