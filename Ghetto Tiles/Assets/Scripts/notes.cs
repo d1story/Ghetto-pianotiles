@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Notes : MonoBehaviour
+public class notes : MonoBehaviour
 {
 
     public float fallingTimeInBeats;//The time it takes for the beat to reach the hitbar in beats.
@@ -30,11 +30,10 @@ public class Notes : MonoBehaviour
         noteBeat = beatController.GetNoteB();
     }
 
-    void HitNote()
+    public void DestroyNote()
     {
         //get reference to class which contains points in start.
         Destroy(gameObject);
-
     }
     void Update()
     {
