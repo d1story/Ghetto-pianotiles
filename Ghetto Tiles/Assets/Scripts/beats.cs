@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class Beats : MonoBehaviour
+public class beats : MonoBehaviour
 {
     public GameObject D, F, J, K;
-    float[] Nextnote = { 3.5f, 3.6f, 3.7f};
+    float[] Nextnote = { 3f, 7f, 10f };
     public float BPM, timeofnothingness, fallingTimeInBeats;
     int number, pos;
     float songpos, songposB, songstartpos, secperbeat;

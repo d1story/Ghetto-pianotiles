@@ -8,7 +8,7 @@ public class notes : MonoBehaviour
     float fallingTimeInBeats;//The time it takes for the beat to reach the hitbar in beats.
     float noteBeat;//The beat of this note
     float songPosInBeats;
-    private Beats beatController;
+    private beats beatController;
     Vector2 SpawnPos;
     Vector2 RemovePos;
 
@@ -23,7 +23,7 @@ public class notes : MonoBehaviour
         GameObject beatControllerObject = GameObject.FindGameObjectWithTag("GameController");
         if (beatControllerObject != null)
         {
-            beatController = beatControllerObject.GetComponent<Beats>();
+            beatController = beatControllerObject.GetComponent<beats>();
         }
 
         //get the noteBeat
@@ -46,6 +46,6 @@ public class notes : MonoBehaviour
             SpawnPos,
             RemovePos,
             (fallingTimeInBeats - (noteBeat - songPosInBeats)) / fallingTimeInBeats);
-
+        if (transform.position.y == RemovePos.y) DestroyNote();
     }
 }
