@@ -5,9 +5,9 @@ using UnityEngine;
 public class notes : MonoBehaviour
 {
 
-    public float fallingTimeInBeats;//The time it takes for the beat to reach the hitbar in beats.
-    public float noteBeat;//The beat of this note
-    public float songPosInBeats;
+    float fallingTimeInBeats;//The time it takes for the beat to reach the hitbar in beats.
+    float noteBeat;//The beat of this note
+    float songPosInBeats;
     private Beats beatController;
     Vector2 SpawnPos;
     Vector2 RemovePos;
@@ -18,7 +18,7 @@ public class notes : MonoBehaviour
         SpawnPos = transform.position;
         fallingTimeInBeats = 2f;
         RemovePos = SpawnPos;
-        RemovePos.y = SpawnPos.y - 10f;
+        RemovePos.y = SpawnPos.y - 12f;
 
         GameObject beatControllerObject = GameObject.FindGameObjectWithTag("GameController");
         if (beatControllerObject != null)
@@ -28,6 +28,8 @@ public class notes : MonoBehaviour
 
         //get the noteBeat
         noteBeat = beatController.GetNoteB();
+        //get the noteBeat
+        fallingTimeInBeats = beatController.GetfallingTimeInBeats();
     }
 
     public void DestroyNote()

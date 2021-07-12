@@ -4,7 +4,7 @@ using UnityEngine;
 public class HitNote : MonoBehaviour
 {
     private Points p;
-    bool right, d, f, j, k;
+    bool right, d, f, j, k, isnote;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,9 +14,14 @@ public class HitNote : MonoBehaviour
             p = pointManagerObject.GetComponent<Points>();
         }
     }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        isnote = false;
+    }
     // If the note touches da bar
     private void OnTriggerStay2D(Collider2D collision)
     {
+        isnote = true;
         notes notehere = collision.GetComponent<notes>();
         right = false;
         if (d&& notehere.transform.position.x == -3f)
@@ -44,6 +49,10 @@ public class HitNote : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isnote == false)
+        {
+            d = false; f = false; k = false; j = false;
+        }
         if (Input.GetKeyDown(KeyCode.D)) d = true;
         if (Input.GetKeyUp(KeyCode.D)) d = false;
         if (Input.GetKeyDown(KeyCode.F)) f = true;
