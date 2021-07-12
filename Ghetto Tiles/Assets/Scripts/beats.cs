@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class Beats : MonoBehaviour
 {
     public GameObject D, F, J, K;
-    float[] Nextnote = { 3.0f, 5.0f, 7.0f };
+    float[] Nextnote = { 3.0f, 5.0f, 7.0f};
     public float BPM, timeofnothingness, fallingTimeInBeats;
     int number, pos;
     float songpos, songposB, songstartpos, secperbeat;

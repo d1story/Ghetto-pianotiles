@@ -44,5 +44,6 @@ public class notes : MonoBehaviour
             SpawnPos,
             RemovePos,
             (fallingTimeInBeats - (noteBeat - songPosInBeats)) / fallingTimeInBeats);
+
     }
 }
