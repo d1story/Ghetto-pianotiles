@@ -16,9 +16,9 @@ public class notes : MonoBehaviour
     void Start()
     {
         SpawnPos = transform.position;
-        fallingTimeInBeats = 2f;
+        fallingTimeInBeats = 8f;
         RemovePos = SpawnPos;
-        RemovePos.y = SpawnPos.y - 10f;
+        RemovePos.y = SpawnPos.y - 12f;
 
         GameObject beatControllerObject = GameObject.FindGameObjectWithTag("GameController");
         if (beatControllerObject != null)
