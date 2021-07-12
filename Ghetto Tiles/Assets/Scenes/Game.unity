@@ -1140,7 +1140,7 @@ MonoBehaviour:
   K: {fileID: 3566478283345563799, guid: 4a14562e88c5d0f4ea7c9769a9d16b4c, type: 3}
   BPM: 130
   timeofnothingness: 1
-  fallingTimeInBeats: 3
+  fallingTimeInBeats: 5
 --- !u!4 &1655269485
 Transform:
   m_ObjectHideFlags: 0
