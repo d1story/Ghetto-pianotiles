@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PointManager
   - PointText
+  - HitSoundPlayer
   layers:
   - Default
   - TransparentFX

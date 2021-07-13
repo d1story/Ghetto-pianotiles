@@ -96,9 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c650f8aa47cb3a4f88b946982c3d3b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallingTimeInBeats: 0
-  noteBeat: 0
-  songPosInBeats: 0
+  effects: {fileID: 7111394735847988724, guid: 418fc7e14d648dd4a81e15291392af17, type: 3}
 --- !u!61 &5637212979416685212
 BoxCollider2D:
   m_ObjectHideFlags: 0

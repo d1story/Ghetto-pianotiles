@@ -9,6 +9,8 @@ public class notes : MonoBehaviour
     float noteBeat;//The beat of this note
     float songPosInBeats;
     private beats beatController;
+    private AudioSource HitSound;
+    public GameObject effects;//particle effects
     Vector2 SpawnPos;
     Vector2 RemovePos;
 
@@ -20,32 +22,44 @@ public class notes : MonoBehaviour
         RemovePos = SpawnPos;
         RemovePos.y = SpawnPos.y - 12f;
 
-        GameObject beatControllerObject = GameObject.FindGameObjectWithTag("GameController");
+        GameObject beatControllerObject = GameObject.FindGameObjectWithTag("GameController");//grab reference to beats script for values
         if (beatControllerObject != null)
         {
             beatController = beatControllerObject.GetComponent<beats>();
         }
 
-        //get the noteBeat
+        GameObject HitSoundObject = GameObject.FindGameObjectWithTag("HitSoundPlayer");//grab reference to play audio on note
+        if (HitSoundObject != null)
+        {
+            HitSound = HitSoundObject.GetComponent<AudioSource>();
+        }
+
+        //get the noteBeat (what beat the note hits the line at)
         noteBeat = beatController.GetNoteB();
-        //get the noteBeat
+        //get the falling time in beats
         fallingTimeInBeats = beatController.GetfallingTimeInBeats();
     }
 
-    public void DestroyNote()
+    public void DestroyNote()//make particles, play noise, then destroy object.
     {
-        //get reference to class which contains points in start.
+        if (effects != null)
+            Instantiate(effects, transform.position, Quaternion.identity);//create particle explosion
+        else
+        {
+            Debug.Log("Prefab effects is not dragged into note prefabs.");
+        }
+        HitSound.Play();//play hit sound
         Destroy(gameObject);
     }
     void Update()
     {
-        //get the songposintbeat
+        //get the songposinbeat
         songPosInBeats = beatController.GetSongPosB();
 
-        transform.position = Vector2.Lerp(
+        transform.position = Vector2.Lerp(//linearly interpolate the position to move the notes.
             SpawnPos,
             RemovePos,
             (fallingTimeInBeats - (noteBeat - songPosInBeats)) / fallingTimeInBeats);
-        if (transform.position.y == RemovePos.y) DestroyNote();
+        if (transform.position.y == RemovePos.y) Destroy(gameObject);//Destroy object once it's gone too far
     }
 }

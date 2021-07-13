@@ -62,7 +62,7 @@ public class beats : MonoBehaviour
         {
             if (number < Nextnote.Length && Nextnote[number] < songposB + fallingTimeInBeats)
             {
-                pos = Random.Range(0, 3);
+                pos = Random.Range(0, 4);
                 Vector2 spawn;
                 switch (pos)
                 {
