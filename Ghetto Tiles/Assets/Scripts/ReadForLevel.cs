@@ -14,13 +14,15 @@ public class ReadForLevel : MonoBehaviour
         textStretch = PathStretch.text;
         string[] beatbit = textBeat.Split(' ');
         string[] stretchbit = textStretch.Split(' ');
-        BeatStructure PlaceHold = new BeatStructure();
-        for(int i=0;i< beatbit.Length&& i < beatbit.Length; i++)
+
+        for (int i = 0; i < beatbit.Length && i < beatbit.Length; i++)
         {
+            BeatStructure PlaceHold = new BeatStructure();
             PlaceHold.beat = float.Parse(beatbit[i]);
             PlaceHold.stretch = float.Parse(stretchbit[i]);
             ret.Add(PlaceHold);
         }
+
         return ret;
     }
 }

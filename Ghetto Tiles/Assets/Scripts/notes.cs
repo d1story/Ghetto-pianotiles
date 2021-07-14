@@ -17,7 +17,7 @@ public class notes : MonoBehaviour
     {
         SpawnPos = transform.position;
         RemovePos = SpawnPos;
-        RemovePos.y = SpawnPos.y - 100f;
+        RemovePos.y = SpawnPos.y - 12f;
         GameObject beatControllerObject = GameObject.FindGameObjectWithTag("GameController");
         if (beatControllerObject != null)
         {
@@ -44,8 +44,8 @@ public class notes : MonoBehaviour
     {
         //get the songposintbeat
         songPosInBeats = beatController.GetSongPosB();
-        Debug.Log(noteBeat);
-        Debug.Log(songPosInBeats);
+        //Debug.Log(noteBeat);
+        //Debug.Log(songPosInBeats);
         transform.position = Vector2.Lerp(
             SpawnPos,
             RemovePos,
