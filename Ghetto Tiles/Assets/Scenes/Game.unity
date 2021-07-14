@@ -1115,6 +1115,7 @@ GameObject:
   - component: {fileID: 1655269485}
   - component: {fileID: 1655269484}
   - component: {fileID: 1655269486}
+  - component: {fileID: 1655269487}
   m_Layer: 0
   m_Name: Beat Controller
   m_TagString: GameController
@@ -1140,7 +1141,7 @@ MonoBehaviour:
   K: {fileID: 3566478283345563799, guid: 4a14562e88c5d0f4ea7c9769a9d16b4c, type: 3}
   BPM: 130
   timeofnothingness: 1
-  fallingTimeInBeats: 5
+  fallingTimeInBeats: 30
 --- !u!4 &1655269485
 Transform:
   m_ObjectHideFlags: 0
@@ -1251,6 +1252,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1655269487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655269483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daeffb759d946d34580b531d40bee2fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PathBeat: {fileID: 4900000, guid: 373438052d1e64249a764500ca2b4d7e, type: 3}
+  PathStretch: {fileID: 4900000, guid: c93206247f2d51943a4d1f0ec4754051, type: 3}
 --- !u!1 &1755879236
 GameObject:
   m_ObjectHideFlags: 0
@@ -1285,9 +1300,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 71.67003, y: -270.5}
+  m_AnchoredPosition: {x: 71.6703, y: -270.497}
   m_SizeDelta: {x: 97.72, y: 40.7}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.49999994, y: 0.4999998}
 --- !u!114 &1755879238
 MonoBehaviour:
   m_ObjectHideFlags: 0

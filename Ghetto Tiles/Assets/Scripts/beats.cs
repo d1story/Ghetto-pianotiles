@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.IO;
 public class beats : MonoBehaviour
 {
     public GameObject D, F, J, K;
-    float[] Nextnote = { 17.8f, 18.8f, 20.8f, 21.5f, 21.9f, 22.8f, 24.8f, 25.5f, 25.9f, 26.8f, 28.8f, 29.5f };
+    List<BeatStructure> Nextnote;
     public float BPM, timeofnothingness, fallingTimeInBeats;
     int number, pos;
     float songpos, songposB, songstartpos, secperbeat;
@@ -26,7 +27,6 @@ public class beats : MonoBehaviour
         //Tell our 'OnLevelFinishedLoading' function to stop listening for a scene change as soon as this script is disabled. Remember to always have an unsubscription for every delegate you subscribe to!
         SceneManager.sceneLoaded -= OnLevelFinishedLoading;
     }
-
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)//This + the upper two functions basically just triggers when the scene is loaded.
     {
         Debug.Log("Level Loaded");
@@ -35,17 +35,21 @@ public class beats : MonoBehaviour
         started = true;
         secperbeat = 60f / BPM;
         songstartpos = (float)AudioSettings.dspTime + timeofnothingness;
+        Nextnote = gameObject.GetComponent<ReadForLevel>().GetInfo();
         GetComponent<AudioSource>().Play();
     }
-    public float GetNoteB()
+    public BeatStructure GetNote()
     {
-        if (number < Nextnote.Length)
+        if (number < Nextnote.Count)
         {
             number++;
-            return Nextnote[number - 1];
+            return (Nextnote[number - 1]);
         }
-
-        return -1;
+        return null;
+    }
+    public float GetSecPerBeat()
+    {
+        return secperbeat;
     }
     public float GetSongPosB()
     {
@@ -60,9 +64,9 @@ public class beats : MonoBehaviour
     {
         if (started)
         {
-            if (number < Nextnote.Length && Nextnote[number] < songposB + fallingTimeInBeats)
+            if (number < Nextnote.Count && Nextnote[number].beat < songposB + fallingTimeInBeats)
             {
-                pos = Random.Range(0, 3);
+                pos = Random.Range(0, 4);
                 Vector2 spawn;
                 switch (pos)
                 {
@@ -83,7 +87,6 @@ public class beats : MonoBehaviour
                         Instantiate(K, spawn, Quaternion.identity);
                         break;
                 }
-
             }
             songpos = (float)AudioSettings.dspTime - songstartpos;
             songposB = songpos / secperbeat;

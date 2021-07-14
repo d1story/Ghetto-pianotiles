@@ -4,63 +4,140 @@ using UnityEngine;
 public class HitNote : MonoBehaviour
 {
     private Points p;
-    bool right, d, f, j, k, isnote;
+    bool d, f, j, k, isd, isf, isj, isk, hold, notecoming;
+    float holdbegin, holdtotalB,secperbeat;
     // Start is called before the first frame update
     void Start()
     {
         GameObject pointManagerObject = GameObject.FindGameObjectWithTag("PointManager");
+        GameObject x = GameObject.FindGameObjectWithTag("GameController");
+        if (x != null)
+        {
+            secperbeat = x.GetComponent<beats>().GetSecPerBeat();
+        }
         if (pointManagerObject != null)
         {
             p = pointManagerObject.GetComponent<Points>();
         }
     }
+    void turn_false(float a)
+    {
+        if (a == -3f) isd = false;
+        else if (a == -1f) isf = false;
+        else if (a == 1f) isj = false;
+        else if (a == 3f) isk = false;
+    }
+    void turn_true(float a)
+    {
+        if (a == -3f) isd = true;
+        else if (a == -1f) isf = true;
+        else if (a == 1f) isj = true;
+        else if (a == 3f) isk = true;
+    }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        isnote = false;
-    }
-    // If the note touches da bar
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        isnote = true;
         notes notehere = collision.GetComponent<notes>();
-        right = false;
-        if (d && notehere.transform.position.x == -3f)
+        turn_false(notehere.transform.position.x);
+        if (holdtotalB > 0) { p.heldhit(holdtotalB); hold = false;}
+    }
+    void normalnote(notes notehere)
+    {
+        bool right = false;
+        if (d && isd)
         {
-            right = true;
+            right = true; d = false;
         }
-        else if (f && notehere.transform.position.x == -1f)
+        else if (f && isf)
         {
-            right = true;
+            right = true; f = false;
         }
-        else if (j && notehere.transform.position.x == 1f)
+        else if (j && isj)
         {
-            right = true;
+            right = true; j = false;
         }
-        else if (k && notehere.transform.position.x == 3f)
+        else if (k && isk)
         {
-            right = true;
+            right = true; k = false;
         }
         if (right)
         {
             p.normalHit();
             notehere.DestroyNote();
-            isnote = false;
+            turn_false(notehere.transform.position.x);
         }
+    }
+    // If the note touches da bar
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        notes notehere = collision.GetComponent<notes>();
+        turn_true(notehere.transform.position.x);
+        if (notehere.Getstretch() > 0) { hold = true;}
+        else normalnote(notehere);
     }
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.D)) d = true;
-        if (Input.GetKeyUp(KeyCode.D)) d = false;
-        if (Input.GetKeyDown(KeyCode.F)) f = true;
-        if (Input.GetKeyUp(KeyCode.F)) f = false;
-        if (Input.GetKeyDown(KeyCode.J)) j = true;
-        if (Input.GetKeyUp(KeyCode.J)) j = false;
-        if (Input.GetKeyDown(KeyCode.K)) k = true;
-        if (Input.GetKeyUp(KeyCode.K)) k = false;
-        if (isnote == false && (d || f || j || k))
+        notecoming = (isf || isd || isj || isk);
+        //ugly, ugly but I don't want it to be too long
+        if (notecoming) {
+            if (Input.GetKeyDown(KeyCode.D)) d = true;
+            if (Input.GetKeyUp(KeyCode.D)) { d = false; holdbegin = -1f; }
+            if (Input.GetKeyDown(KeyCode.F)) f = true;
+            if (Input.GetKeyUp(KeyCode.F)) { f = false; holdbegin = -1f; }
+            if (Input.GetKeyDown(KeyCode.J)) j = true;
+            if (Input.GetKeyUp(KeyCode.J)) {j = false; holdbegin = -1f; }
+            if (Input.GetKeyDown(KeyCode.K)) k = true;
+            if (Input.GetKeyUp(KeyCode.K)) { k = false; holdbegin = -1f; }
+        }
+        if (hold)
         {
-            d = false; f = false; k = false; j = false;
+            if (k && isk)
+            {
+                float T = Time.deltaTime;
+                if (holdbegin > 0)
+                    holdtotalB += (T - holdbegin)/secperbeat;
+                holdbegin = T;
+            }
+            if (j && isj)
+            {
+                float T = Time.deltaTime;
+                if (holdbegin > 0)
+                    holdtotalB += (T - holdbegin) / secperbeat;
+                holdbegin = T;
+            }
+            if (f && isf)
+            {
+                float T = Time.deltaTime;
+                if (holdbegin > 0)
+                    holdtotalB += (T - holdbegin) / secperbeat;
+                holdbegin = T;
+            }
+            if (d && isd)
+            {
+                float T = Time.deltaTime;
+                if (holdbegin > 0)
+                    holdtotalB += (T - holdbegin) / secperbeat;
+                holdbegin = T;
+            }
+        }
+        if (!isd && d)
+        {
+            d = false;
+            p.wrongHit();
+        }
+        if (!isf && f)
+        {
+            f = false;
+            p.wrongHit();
+        }
+        if (!isj && j)
+        {
+            j = false;
+            p.wrongHit();
+        }
+        if (!isk && k)
+        {
+            k = false;
             p.wrongHit();
         }
     }
