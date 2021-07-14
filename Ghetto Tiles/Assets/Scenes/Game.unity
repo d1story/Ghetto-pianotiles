@@ -157,8 +157,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 67.2, y: -265}
-  m_SizeDelta: {x: 114.24, y: 35.3}
+  m_AnchoredPosition: {x: -1.35, y: -235.04}
+  m_SizeDelta: {x: 184.32, y: 36.32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &28034823
 MonoBehaviour:
@@ -709,8 +709,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 182.84015, y: -265}
-  m_SizeDelta: {x: 121.27, y: 35.3}
+  m_AnchoredPosition: {x: 45.40503, y: -235.04}
+  m_SizeDelta: {x: 90.81, y: 36.325}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &587721344
 MonoBehaviour:
@@ -1194,6 +1194,7 @@ GameObject:
   - component: {fileID: 1655269485}
   - component: {fileID: 1655269484}
   - component: {fileID: 1655269486}
+  - component: {fileID: 1655269487}
   m_Layer: 0
   m_Name: Beat Controller
   m_TagString: GameController
@@ -1330,6 +1331,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1655269487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655269483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daeffb759d946d34580b531d40bee2fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PathBeat: {fileID: 4900000, guid: 373438052d1e64249a764500ca2b4d7e, type: 3}
+  PathStretch: {fileID: 4900000, guid: c93206247f2d51943a4d1f0ec4754051, type: 3}
 --- !u!1 &1793945713
 GameObject:
   m_ObjectHideFlags: 0

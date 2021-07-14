@@ -4,62 +4,49 @@ using UnityEngine;
 
 public class notes : MonoBehaviour
 {
-
     float fallingTimeInBeats;//The time it takes for the beat to reach the hitbar in beats.
     float noteBeat;//The beat of this note
     float songPosInBeats;
+    Vector3 stretch;
     private beats beatController;
-    private AudioSource HitSound;
-    public GameObject effects;//particle effects
     Vector2 SpawnPos;
     Vector2 RemovePos;
-
+    BeatStructure Get;
     // Start is called before the first frame update
     void Start()
     {
         SpawnPos = transform.position;
-        fallingTimeInBeats = 2f;
         RemovePos = SpawnPos;
         RemovePos.y = SpawnPos.y - 12f;
-
-        GameObject beatControllerObject = GameObject.FindGameObjectWithTag("GameController");//grab reference to beats script for values
+        GameObject beatControllerObject = GameObject.FindGameObjectWithTag("GameController");
         if (beatControllerObject != null)
         {
             beatController = beatControllerObject.GetComponent<beats>();
+            //get info from beats
+            Get = beatController.GetNote();
+            stretch.y = Get.stretch;
+            noteBeat = Get.beat;
+            fallingTimeInBeats = beatController.GetfallingTimeInBeats();
+            gameObject.transform.localScale += stretch;
         }
-
-        GameObject HitSoundObject = GameObject.FindGameObjectWithTag("HitSoundPlayer");//grab reference to play audio on note
-        if (HitSoundObject != null)
-        {
-            HitSound = HitSoundObject.GetComponent<AudioSource>();
-        }
-
-        //get the noteBeat (what beat the note hits the line at)
-        noteBeat = beatController.GetNoteB();
-        //get the falling time in beats
-        fallingTimeInBeats = beatController.GetfallingTimeInBeats();
+        else Debug.Log("Missing object");
     }
-
-    public void DestroyNote()//make particles, play noise, then destroy object.
+    public float Getstretch()
     {
-        if (effects != null)
-            Instantiate(effects, transform.position, Quaternion.identity);//create particle explosion
-        else
-        {
-            Debug.Log("Prefab effects is not dragged into note prefabs.");
-        }
-        HitSound.Play();//play hit sound
+        return stretch.y;
+    }
+    public void DestroyNote()
+    {
+        //get reference to class which contains points in start.
         Destroy(gameObject);
     }
     void Update()
     {
-        //get the songposinbeat
         songPosInBeats = beatController.GetSongPosB();
-
-        transform.position = Vector2.Lerp(//linearly interpolate the position to move the notes.
+        transform.position = Vector2.Lerp(
             SpawnPos,
             RemovePos,
             (fallingTimeInBeats - (noteBeat - songPosInBeats)) / fallingTimeInBeats);
-        if (transform.position.y == RemovePos.y) Destroy(gameObject);//Destroy object once it's gone too far
+        if (transform.position.y == RemovePos.y) { Destroy(gameObject); }
     }
 }
