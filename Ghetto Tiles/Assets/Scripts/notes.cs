@@ -12,6 +12,8 @@ public class notes : MonoBehaviour
     Vector2 SpawnPos;
     Vector2 RemovePos;
     BeatStructure Get;
+    private AudioSource HitSound;
+    public GameObject effects;//particle effects
     // Start is called before the first frame update
     void Start()
     {
@@ -29,16 +31,38 @@ public class notes : MonoBehaviour
             fallingTimeInBeats = beatController.GetfallingTimeInBeats();
             gameObject.transform.localScale += stretch;
         }
+
+        GameObject HitSoundObject = GameObject.FindGameObjectWithTag("HitSoundPlayer");//grab reference to play audio on note
+        if (HitSoundObject != null)
+        {
+            HitSound = HitSoundObject.GetComponent<AudioSource>();
+        }
         else Debug.Log("Missing object");
     }
     public float Getstretch()
     {
         return stretch.y;
     }
-    public void DestroyNote()
+    public void DestroyNote()//make particles, play noise, then destroy object.
     {
-        //get reference to class which contains points in start.
+        if (effects != null)
+            Instantiate(effects, transform.position, Quaternion.identity);//create particle explosion
+        else
+        {
+            Debug.Log("Prefab effects is not dragged into note prefabs.");
+        }
+        HitSound.Play();//play hit sound
         Destroy(gameObject);
+    }
+
+    public void holdEffects()
+    {
+        if (effects != null)
+            Instantiate(effects, new Vector2(transform.position.x, -4), Quaternion.identity);//create particle explosion
+        else
+        {
+            Debug.Log("Prefab effects is not dragged into note prefabs.");
+        }
     }
     void Update()
     {

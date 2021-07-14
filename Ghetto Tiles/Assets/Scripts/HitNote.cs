@@ -71,7 +71,12 @@ public class HitNote : MonoBehaviour
     {
         notes notehere = collision.GetComponent<notes>();
         turn_true(notehere.transform.position.x);
-        if (notehere.Getstretch() > 0) { hold = true; }
+        if (notehere.Getstretch() > 0)
+        {
+            hold = true;
+            notehere.holdEffects();
+
+        }
         else normalnote(notehere);
     }
     // Update is called once per frame
